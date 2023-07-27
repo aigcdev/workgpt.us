@@ -3,8 +3,8 @@
         <SvgIcon name="logo" class="logo" />
         <Nav />
         <div class="operation">
-            <NuxtLink class="login" to="/">Login</NuxtLink>
-            <NuxtLink class="try" to="/">Try It Now</NuxtLink>
+            <NuxtLink class="login" to="https://chat.workgpt.us/login">Login</NuxtLink>
+            <NuxtLink class="try" to="https://chat.workgpt.us/register">Try It Now</NuxtLink>
         </div>
     </div>
 </template>

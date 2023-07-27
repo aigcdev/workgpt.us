@@ -5,30 +5,37 @@
                 <SvgIcon name="logo-white" class="logo" />
                 <Nav font-color="#fff" />
                 <div class="contact-list">
-                    <NuxtLink to="/">
+                    <NuxtLink to="https://twitter.com/workgpt_us">
                         <SvgIcon name="twitter" />
                     </NuxtLink>
-                    <NuxtLink to="/">
+                    <NuxtLink to="https://www.facebook.com/groups/shopflex">
                         <SvgIcon name="facebook" />
                     </NuxtLink>
-                    <NuxtLink to="/">
-                        <SvgIcon name="instagram" />
+                    <NuxtLink to="https://www.linkedin.com/company/workgpt">
+                        <SvgIcon name="linkedin" />
                     </NuxtLink>
-                    <NuxtLink to="/">
-                        <SvgIcon name="github" />
+                    <NuxtLink to="https://www.youtube.com/channel/UCbRav4l3M30l3p8hhBPz5VQ">
+                        <SvgIcon name="youtube" />
                     </NuxtLink>
                 </div>
             </div>
             <div>
                 <div class="title">Subscribe to get latest updates</div>
                 <div class="input">
-                    <input type="text" placeholder="Your Email address" />
-                    <div class="submit-button">Subscribe</div>
+                    <input v-model="emailAddress" type="text" placeholder="Your Email address" />
+                    <NuxtLink
+                        class="submit-button"
+                        :to="`mailto:support@workgpt.us?subject=Subscribe to WorkGPT updates&cc=${emailAddress}`"
+                    >
+                        Subscribe
+                    </NuxtLink>
                 </div>
             </div>
             <div class="copyright">
                 <div>© Copyright 2023, All Rights Reserved</div>
+                <div class="mobile">Contact Us: support@workgpt.us</div>
                 <div>Privacy Policy</div>
+                <div class="pc">Contact Us: support@workgpt.us</div>
             </div>
         </div>
     </div>
@@ -36,6 +43,8 @@
 
 <script setup lang="ts">
     import Nav from './Nav.vue'
+
+    const emailAddress = ref('')
 </script>
 
 <style scoped lang="less">
@@ -174,11 +183,26 @@
         font-weight: 400;
         line-height: 26px;
 
+        .pc {
+            display: block;
+        }
+
+        .mobile {
+            display: none;
+        }
+
         @media screen and (max-width: @viewport-lg) {
             flex-direction: column;
             align-items: center;
 
             font-size: 14px;
+
+            .pc {
+                display: none;
+            }
+            .mobile {
+                display: block;
+            }
         }
 
         @media screen and (max-width: @viewport-md) {

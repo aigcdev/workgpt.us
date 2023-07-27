@@ -1,5 +1,5 @@
 <template>
-    <div class="use-cases-container">
+    <div id="useCases" class="use-cases-container">
         <Title title="Use Cases" sub-title="Get you started with ready use templates." />
         <div class="content">
             <div v-for="(item, index) in caseList" :key="index" class="item-card">
@@ -13,7 +13,6 @@
                 <div class="time">Save {{ item.time }}</div>
             </div>
         </div>
-        <NuxtLink to="/" class="button">See More</NuxtLink>
     </div>
 </template>
 
@@ -165,25 +164,5 @@
         border-radius: 50px;
         background: rgba(16, 25, 49, 0.05);
         margin-top: 18px;
-    }
-
-    .button {
-        display: block;
-        width: fit-content;
-        margin: 0 auto;
-        padding: 16px 48px;
-        color: @color-white;
-        font-feature-settings: 'clig' off, 'liga' off;
-        font-size: 24px;
-        font-style: normal;
-        font-weight: 500;
-        line-height: normal;
-        text-transform: capitalize;
-        border-radius: 64px;
-        background: #0056f5;
-        box-shadow: 0px 10px 30px 0px rgba(0, 90, 255, 0.2);
-        @media screen and (max-width: @viewport-xl) {
-            font-size: 16px;
-        }
     }
 </style>

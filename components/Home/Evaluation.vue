@@ -1,6 +1,6 @@
 <template>
-    <div class="evaluation-container">
-        <Title title="How It Works" sub-title="Your All-In-One Problem Solving Chatbot." />
+    <div id="features" class="evaluation-container">
+        <Title title="How It Works" sub-title="Your all-in-one problem solving chatbot." />
         <div v-for="(item, index) in contentList" :key="index" class="content">
             <img :src="item.imagePath" />
             <div :style="`max-width: ${item.textContentMaxWidth}px`">
@@ -20,8 +20,8 @@
 
     const contentList = [
         {
-            title: 'Chat With \nYour APIs/Services',
-            subTitle: 'API Integration Made Easy.',
+            title: 'Chat with \nyour APIs/Services',
+            subTitle: 'API integration made easy.',
             intro: 'Seamlessly integrate with your own internal data and query any data anytime, without the need for programmer support. Execute requested tasks and return the results.',
             imagePath: image1,
             textContentMaxWidth: 480
@@ -106,7 +106,6 @@
             font-weight: 700;
             line-height: 48px;
             letter-spacing: -1px;
-            text-transform: capitalize;
             white-space: pre-wrap;
             @media screen and (max-width: @viewport-xl) {
                 align-self: stretch;
@@ -123,7 +122,6 @@
             font-style: normal;
             font-weight: 400;
             line-height: 40px; /* 125% */
-            text-transform: capitalize;
             margin-top: 12px;
             @media screen and (max-width: @viewport-xl) {
                 display: none;

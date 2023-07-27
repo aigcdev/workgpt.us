@@ -1,15 +1,21 @@
 <template>
-    <div class="intro-container">
+    <div id="product" class="intro-container">
         <div>
             <div class="title"> {{ 'Customized \nChatGPT \nfor your work' }} </div>
             <div class="intro"> Chat with your private APl, tools, data. </div>
             <div class="operation">
                 <div class="pc">
-                    <NuxtLink to="/">Try it now - it’s free</NuxtLink>
-                    <NuxtLink to="/">Schedule for demo</NuxtLink>
+                    <NuxtLink to="https://chat.workgpt.us/register">
+                        Try it now - It’s free
+                    </NuxtLink>
+                    <NuxtLink to="mailto:support@workgpt.us?subject=Schedule a Demo">
+                        Schedule for Demo
+                    </NuxtLink>
                 </div>
                 <div class="mobile">
-                    <NuxtLink to="/">Try it now - it’s free</NuxtLink>
+                    <NuxtLink to="https://chat.workgpt.us/register">
+                        Try it now - it’s free
+                    </NuxtLink>
                 </div>
             </div>
             <div class="tips"> {{ 'Get started for free, \nno credit card required.' }} </div>
@@ -132,7 +138,6 @@
                 color: @color-white;
                 display: inline-block;
                 position: relative;
-                text-transform: capitalize;
                 color: #fff;
                 font-feature-settings: 'clig' off, 'liga' off;
                 font-size: 16px;

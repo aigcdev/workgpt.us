@@ -1,8 +1,8 @@
 <template>
     <div class="nav" :style="`color:${fontColor}`">
-        <NuxtLink to="/">Product</NuxtLink>
-        <NuxtLink to="/">Features</NuxtLink>
-        <NuxtLink to="/">Use Cases</NuxtLink>
+        <NuxtLink to="#product">Product</NuxtLink>
+        <NuxtLink to="#features">Features</NuxtLink>
+        <NuxtLink to="#useCases">Use Cases</NuxtLink>
     </div>
 </template>
 

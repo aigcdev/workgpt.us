@@ -1,10 +1,12 @@
 <template>
-    <div>
-        <Intro />
-        <Evaluation />
-        <UseCases />
-        <CreateAccount />
-    </div>
+    <NuxtLayout>
+        <div>
+            <Intro />
+            <Evaluation />
+            <UseCases />
+            <CreateAccount />
+        </div>
+    </NuxtLayout>
 </template>
 
 <script setup lang="ts">

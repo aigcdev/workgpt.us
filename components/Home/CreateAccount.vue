@@ -1,7 +1,9 @@
 <template>
     <div class="create-account-container">
         <div class="title">{{ 'Ready to Create \nan AI Agent?' }}</div>
-        <NuxtLink class="button">Create a Free Account</NuxtLink>
+        <NuxtLink class="button" to="https://chat.workgpt.us/register">
+            Create a Free Account
+        </NuxtLink>
     </div>
 </template>
 
@@ -52,7 +54,6 @@
             font-style: normal;
             font-weight: 500;
             line-height: normal;
-            text-transform: capitalize;
             border-radius: 64px;
             background: #0056f5;
             box-shadow: 0px 10px 30px 0px rgba(0, 90, 255, 0.2);
