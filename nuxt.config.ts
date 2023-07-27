@@ -8,7 +8,7 @@ export default defineNuxtConfig({
             title: 'workGPT'
         },
         buildAssetsDir: '/static/',
-        baseURL: '/workgpt.us/'
+        baseURL: '/'
     },
     ssr: false,
     vite: {
