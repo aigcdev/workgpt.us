@@ -2,7 +2,12 @@
     <div id="useCases" class="use-cases-container">
         <Title title="Use Cases" sub-title="Get you started with ready use templates." />
         <div class="content">
-            <div v-for="(item, index) in caseList" :key="index" class="item-card">
+            <NuxtLink
+                v-for="(item, index) in caseList"
+                :key="index"
+                :to="item.to"
+                class="item-card"
+            >
                 <div class="icon-list">
                     <div v-for="iconPath in item.iconPathList" :key="iconPath" class="icon">
                         <img :src="iconPath" />
@@ -11,7 +16,7 @@
                 <div class="title">{{ item.title }}</div>
                 <div class="intro">{{ item.intro }}</div>
                 <div class="time">Save {{ item.time }}</div>
-            </div>
+            </NuxtLink>
         </div>
     </div>
 </template>
@@ -34,49 +39,57 @@
             iconPathList: [icon1, icon2, icon3],
             title: 'Email Scraper',
             intro: 'Scrape all the emails on the website and sync to Google Sheet.',
-            time: '15 min'
+            time: '15 min',
+            to: 'https://sites.google.com/shopflex.io/workgpt/scraping-email-address-to-google-sheet'
         },
         {
             iconPathList: [icon4, icon5, icon3],
             title: 'Twitter Manager',
             intro: 'Post the news with tags to Twitter everyday 10am.',
-            time: '30 min'
+            time: '30 min',
+            to: 'https://sites.google.com/shopflex.io/workgpt/automating-twitter-posts-with-daily-hot-news-using-workgpt'
         },
         {
             iconPathList: [icon6, icon2, icon3],
             title: 'News Agent',
             intro: 'Get hacker news and put result in a Google Sheet table.',
-            time: '10 min'
+            time: '10 min',
+            to: 'https://sites.google.com/shopflex.io/workgpt/extract-news-source-link-and-send-to-email'
         },
         {
             iconPathList: [icon7, icon8, icon3],
             title: 'Meeting Reminder',
             intro: 'Send email with the today’s meeting link.',
-            time: '3 min'
+            time: '3 min',
+            to: 'https://sites.google.com/shopflex.io/workgpt/schedule-meeting-to-google-calendar'
         },
         {
             iconPathList: [icon9, icon3],
             title: 'Database Agent',
             intro: 'Check the number of user registered in 2023.',
-            time: '1 hour'
+            time: '1 hour',
+            to: 'https://sites.google.com/shopflex.io/workgpt/automate-customer-inquiry-responses-via-internal-service-api'
         },
         {
             iconPathList: [icon1, icon3],
             title: 'Blog Manager',
             intro: 'Generate blog and post it to my blog.',
-            time: '40 min'
+            time: '40 min',
+            to: 'https://sites.google.com/shopflex.io/workgpt/create-the-draft-of-blog-post-on-given-topictheme-with-workgpt'
         },
         {
             iconPathList: [icon10, icon2, icon3],
             title: 'Reviewer',
             intro: 'Get the product review from Google Search to Google Sheet.',
-            time: '5 min'
+            time: '5 min',
+            to: 'https://sites.google.com/shopflex.io/workgpt/colloect-review-from-google-search-to-google-sheet'
         },
         {
             iconPathList: [icon3],
             title: 'English Translator',
             intro: 'Translate any content into English.',
-            time: '40 min'
+            time: '40 min',
+            to: 'https://sites.google.com/shopflex.io/workgpt/translate-any-content-into-english'
         }
     ]
 </script>
@@ -104,6 +117,7 @@
         column-gap: 16px;
         padding: 64px 0;
         .item-card {
+            color: inherit;
             padding: 65px 16px 20px;
             border-radius: 24px;
             border: 1px solid rgba(145, 163, 187, 0.2);

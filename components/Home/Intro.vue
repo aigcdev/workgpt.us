@@ -121,13 +121,6 @@
                 position: absolute;
                 top: 8px;
                 left: 8px;
-                transition: left 0.2s;
-            }
-
-            &:has(a:nth-child(2):hover) {
-                &::before {
-                    left: 227px;
-                }
             }
 
             a {

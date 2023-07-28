@@ -4,7 +4,7 @@
             <span class="c16">Privacy Policy</span>
         </p>
         <p class="c2">
-            <span class="c3">Last updated: May. 2022</span>
+            <span class="c3">Last updated: July. 2023</span>
         </p>
         <p class="c2">
             <span class="c3">&nbsp;</span>

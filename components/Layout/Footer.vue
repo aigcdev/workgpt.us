@@ -33,9 +33,13 @@
             </div>
             <div class="copyright">
                 <div>© Copyright 2023, All Rights Reserved</div>
-                <div class="mobile">Contact Us: support@workgpt.us</div>
-                <div>Privacy Policy</div>
-                <div class="pc">Contact Us: support@workgpt.us</div>
+                <NuxtLink style="color: #fff" to="mailto:support@workgpt.us" class="mobile">
+                    Contact Us: support@workgpt.us
+                </NuxtLink>
+                <NuxtLink style="color: #fff" to="/privacyPolicy">Privacy Policy</NuxtLink>
+                <NuxtLink style="color: #fff" to="mailto:support@workgpt.us" class="pc">
+                    Contact Us: support@workgpt.us
+                </NuxtLink>
             </div>
         </div>
     </div>
