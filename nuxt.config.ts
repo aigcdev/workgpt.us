@@ -18,6 +18,23 @@ export default defineNuxtConfig({
                     content:
                         'WorkGPT, ChatGPT, AI Chatbot, Task Automation, Workflow Optimization, No Coding, Free Trial, Email Scraper, Twitter Manager, News Agent, Meeting Reminder, Database Agent, Blog Manager, English Translator'
                 }
+            ],
+            script: [
+                {
+                    src: 'https://www.googletagmanager.com/gtag/js?id=G-JX30K56GX6',
+                    async: true,
+                    body: true
+                },
+                {
+                    textContent: `
+                        window.dataLayer = window.dataLayer || [];
+                        function gtag(){dataLayer.push(arguments);}
+                        gtag('js', new Date());
+                    
+                        gtag('config', 'G-JX30K56GX6');
+                    `,
+                    body: true
+                }
             ]
         },
         buildAssetsDir: '/static/',
