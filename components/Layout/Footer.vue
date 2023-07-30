@@ -36,7 +36,7 @@
                 <NuxtLink style="color: #fff" to="mailto:support@workgpt.us" class="mobile">
                     Contact Us: support@workgpt.us
                 </NuxtLink>
-                <NuxtLink style="color: #fff" to="/privacyPolicy">Privacy Policy</NuxtLink>
+                <NuxtLink style="color: #fff" to="/privacy_policy">Privacy Policy</NuxtLink>
                 <NuxtLink style="color: #fff" to="mailto:support@workgpt.us" class="pc">
                     Contact Us: support@workgpt.us
                 </NuxtLink>
