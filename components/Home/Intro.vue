@@ -8,24 +8,30 @@
                     <NuxtLink to="https://chat.workgpt.us/register">
                         Try it now - It’s free
                     </NuxtLink>
-                    <NuxtLink to="mailto:support@workgpt.us?subject=Schedule a Demo">
-                        Schedule for Demo
-                    </NuxtLink>
+                    <NuxtLink @click="dialogShow = true"> Schedule for Demo </NuxtLink>
                 </div>
                 <div class="mobile">
-                    <NuxtLink to="https://chat.workgpt.us/register">
-                        Try it now - it’s free
-                    </NuxtLink>
+                    <NuxtLink to=""> Try it now - it’s free </NuxtLink>
                 </div>
             </div>
             <div class="tips"> {{ 'Get started for free, \nno credit card required.' }} </div>
         </div>
         <img v-lazy="introImg" />
     </header>
+    <el-dialog v-model="dialogShow" destroy-on-close>
+        <iframe
+            style="border: none"
+            width="100%"
+            height="520px"
+            src="https://cdn.forms-content.sg-form.com/711331c4-2e0b-11ee-8bb3-da3b37abf17b"
+        />
+    </el-dialog>
 </template>
 
 <script setup lang="ts">
     import introImg from '~/assets/images/intro.png?url'
+
+    const dialogShow = ref(false)
 </script>
 
 <style scoped lang="less">

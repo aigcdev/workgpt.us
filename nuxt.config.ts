@@ -58,5 +58,6 @@ export default defineNuxtConfig({
     devtools: {
         enabled: true
     },
-    css: ['normalize.css/normalize.css', '~/assets/styles/index.less', '~/assets/styles/font.less']
+    css: ['normalize.css/normalize.css', '~/assets/styles/index.less', '~/assets/styles/font.less'],
+    modules: ['@element-plus/nuxt']
 })

@@ -23,10 +23,7 @@
                 <div class="title">Subscribe to get latest updates</div>
                 <div class="input">
                     <input v-model="emailAddress" type="text" placeholder="Your Email address" />
-                    <NuxtLink
-                        class="submit-button"
-                        :to="`mailto:support@workgpt.us?subject=Subscribe to WorkGPT updates&cc=${emailAddress}`"
-                    >
+                    <NuxtLink class="submit-button" @click="dialogShow = true">
                         Subscribe
                     </NuxtLink>
                 </div>
@@ -43,12 +40,21 @@
             </div>
         </div>
     </footer>
+    <el-dialog v-model="dialogShow" destroy-on-close>
+        <iframe
+            style="border: none"
+            width="100%"
+            height="520px"
+            src="https://cdn.forms-content.sg-form.com/c753648a-2e0a-11ee-8bb3-da3b37abf17b"
+        />
+    </el-dialog>
 </template>
 
 <script setup lang="ts">
     import Nav from './Nav.vue'
 
     const emailAddress = ref('')
+    const dialogShow = ref(false)
 </script>
 
 <style scoped lang="less">
