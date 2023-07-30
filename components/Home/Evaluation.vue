@@ -1,5 +1,5 @@
 <template>
-    <div id="features" class="evaluation-container">
+    <section id="features" class="evaluation-container">
         <Title title="How It Works" sub-title="Your all-in-one problem solving chatbot." />
         <div v-for="(item, index) in contentList" :key="index" class="content">
             <img :src="item.imagePath" />
@@ -9,7 +9,7 @@
                 <div class="intro">{{ item.intro }}</div>
             </div>
         </div>
-    </div>
+    </section>
 </template>
 
 <script setup lang="ts">

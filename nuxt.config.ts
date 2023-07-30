@@ -5,7 +5,20 @@ import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 export default defineNuxtConfig({
     app: {
         head: {
-            title: 'workGPT'
+            title: 'WorkGPT: Customized ChatGPT | Your All-in-One Problem Solving Chatbot & AI Agents',
+            viewport: 'width=device-width, initial-scale=1.0',
+            meta: [
+                {
+                    name: 'description',
+                    content:
+                        'WorkGPT is a customized ChatGPT for your work, allowing you to chat with your private APIs, tools, and data. Seamlessly integrate with your internal data, execute tasks, and optimize your workflow. No coding expertise required. Try it now for free!'
+                },
+                {
+                    name: 'keywords',
+                    content:
+                        'WorkGPT, ChatGPT, AI Chatbot, Task Automation, Workflow Optimization, No Coding, Free Trial, Email Scraper, Twitter Manager, News Agent, Meeting Reminder, Database Agent, Blog Manager, English Translator'
+                }
+            ]
         },
         buildAssetsDir: '/static/',
         baseURL: '/'

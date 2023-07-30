@@ -1,5 +1,5 @@
 <template>
-    <div id="product" class="intro-container">
+    <header id="product" class="intro-container">
         <div>
             <div class="title"> {{ 'Customized \nChatGPT \nfor your work' }} </div>
             <div class="intro"> Chat with your private APl, tools, data. </div>
@@ -21,7 +21,7 @@
             <div class="tips"> {{ 'Get started for free, \nno credit card required.' }} </div>
         </div>
         <img src="~/assets/images/intro.png" />
-    </div>
+    </header>
 </template>
 
 <script setup lang="ts"></script>

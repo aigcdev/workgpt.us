@@ -1,5 +1,5 @@
 <template>
-    <div id="useCases" class="use-cases-container">
+    <section id="useCases" class="use-cases-container">
         <Title title="Use Cases" sub-title="Get you started with ready use templates." />
         <div class="content">
             <NuxtLink
@@ -18,7 +18,7 @@
                 <div class="time">Save {{ item.time }}</div>
             </NuxtLink>
         </div>
-    </div>
+    </section>
 </template>
 
 <script setup lang="ts">

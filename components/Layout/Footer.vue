@@ -1,5 +1,5 @@
 <template>
-    <div class="footer-container">
+    <footer class="footer-container">
         <div class="box">
             <div>
                 <SvgIcon name="logo-white" class="logo" />
@@ -42,7 +42,7 @@
                 </NuxtLink>
             </div>
         </div>
-    </div>
+    </footer>
 </template>
 
 <script setup lang="ts">
