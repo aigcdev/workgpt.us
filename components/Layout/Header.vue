@@ -15,6 +15,11 @@
 
 <style scoped lang="less">
     .header-container {
+        position: sticky;
+        top: 0;
+        background-color: @color-white;
+        z-index: 10000;
+
         height: 110px;
         display: flex;
         justify-content: space-between;
