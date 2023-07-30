@@ -10,7 +10,7 @@
             >
                 <div class="icon-list">
                     <div v-for="iconPath in item.iconPathList" :key="iconPath" class="icon">
-                        <img :src="iconPath" />
+                        <img v-lazy="iconPath" />
                     </div>
                 </div>
                 <div class="title">{{ item.title }}</div>

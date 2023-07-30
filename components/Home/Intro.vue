@@ -20,11 +20,13 @@
             </div>
             <div class="tips"> {{ 'Get started for free, \nno credit card required.' }} </div>
         </div>
-        <img src="~/assets/images/intro.png" />
+        <img v-lazy="introImg" />
     </header>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+    import introImg from '~/assets/images/intro.png?url'
+</script>
 
 <style scoped lang="less">
     .intro-container {

@@ -2,7 +2,7 @@
     <section id="features" class="evaluation-container">
         <Title title="How It Works" sub-title="Your all-in-one problem solving chatbot." />
         <div v-for="(item, index) in contentList" :key="index" class="content">
-            <img :src="item.imagePath" />
+            <img v-lazy="item.imagePath" />
             <div :style="`max-width: ${item.textContentMaxWidth}px`">
                 <div class="title">{{ item.title }}</div>
                 <div class="sub-title">{{ item.subTitle }}</div>
