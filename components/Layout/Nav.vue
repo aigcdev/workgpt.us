@@ -1,8 +1,9 @@
 <template>
     <div class="nav" :class="theme">
-        <el-dropdown :teleported="false" class="item" trigger="click">
-            <div>
-                Product<el-icon class="el-icon--right"><arrow-down /></el-icon>
+        <div v-if="showHome" class="item" @click="scrollTo('home')">Home</div>
+        <el-dropdown v-if="showProducts" :teleported="false" class="item" trigger="click">
+            <div style="display: flex; align-items: center">
+                Products<el-icon class="el-icon--right"><arrow-down /></el-icon>
             </div>
             <template #dropdown>
                 <el-dropdown-menu>
@@ -41,9 +42,13 @@
     withDefaults(
         defineProps<{
             theme?: 'light' | 'dark'
+            showHome: boolean
+            showProducts: boolean
         }>(),
         {
-            theme: 'light'
+            theme: 'light',
+            showHome: false,
+            showProducts: true
         }
     )
 
@@ -86,6 +91,29 @@
             }
         }
     }
+
+    .el-icon--right {
+        color: @default-font-color;
+    }
+
+    :deep(.el-dropdown:has(.el-dropdown__popper[aria-hidden='false'])) {
+        .el-tooltip__trigger {
+            color: #0056f5;
+        }
+        .el-icon--right {
+            transform: scaleY(-1);
+        }
+    }
+
+    :deep(.el-dropdown__popper.el-popper) {
+        border-radius: 12px;
+        overflow: hidden;
+    }
+
+    :deep(.el-dropdown-menu) {
+        padding: 16px 0;
+    }
+
     :deep(.el-dropdown-menu__item) {
         color: inherit;
         padding: 12px 24px;
@@ -95,6 +123,11 @@
         font-weight: 400;
         line-height: normal;
         text-transform: capitalize;
+        min-width: 232px;
+        box-sizing: border-box;
+        & + .el-dropdown-menu__item {
+            margin-top: 12px;
+        }
         .dropdown-item {
             color: inherit;
         }

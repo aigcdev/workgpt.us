@@ -1,5 +1,5 @@
 <template>
-    <header id="product" class="intro-container">
+    <header id="home" class="intro-container">
         <div>
             <div class="title"> {{ 'Customized \nChatGPT \nfor your work' }} </div>
             <div class="intro"> Chat with your private APl, tools, data. </div>
@@ -11,7 +11,9 @@
                     <NuxtLink @click="dialogShow = true"> Schedule for Demo </NuxtLink>
                 </div>
                 <div class="mobile">
-                    <NuxtLink to=""> Try it now - it’s free </NuxtLink>
+                    <NuxtLink to="https://chat.workgpt.us/register">
+                        Try it now - it’s free
+                    </NuxtLink>
                 </div>
             </div>
             <div class="tips"> {{ 'Get started for free, \nno credit card required.' }} </div>
