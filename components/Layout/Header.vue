@@ -1,10 +1,12 @@
 <template>
     <div class="header-container" :class="[shadowing ? 'shadowing' : '']">
-        <SvgIcon name="logo" class="logo" />
-        <Nav />
-        <div class="operation">
-            <NuxtLink class="login" to="https://chat.workgpt.us/login">Login</NuxtLink>
-            <NuxtLink class="try" to="https://chat.workgpt.us/register">Try It Now</NuxtLink>
+        <div>
+            <SvgIcon name="logo" class="logo" />
+            <Nav />
+            <div class="operation">
+                <NuxtLink class="login" to="https://chat.workgpt.us/login">Login</NuxtLink>
+                <NuxtLink class="try" to="https://chat.workgpt.us/register">Try It Now</NuxtLink>
+            </div>
         </div>
     </div>
 </template>
@@ -27,12 +29,7 @@
         z-index: 1000;
 
         height: 110px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
 
-        max-width: @page-content-max-width;
-        margin: 0 auto;
         padding: 0 40px;
         box-shadow: none;
         transition: box-shadow 0.2s;
@@ -45,6 +42,18 @@
 
         &.shadowing {
             box-shadow: 0px 4px 4px 0px rgba(216, 216, 216, 0.25);
+        }
+
+        > div {
+            height: 100%;
+            max-width: @page-content-max-width;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            @media screen and (max-width: @viewport-md) {
+                justify-content: center;
+            }
         }
     }
 
