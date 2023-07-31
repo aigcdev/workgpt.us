@@ -83,11 +83,11 @@
         font-style: normal;
         font-weight: 600;
         line-height: 60px;
-        letter-spacing: -2px;
+        letter-spacing: -1px;
 
         @media screen and (max-width: @viewport-lg) {
             font-size: 38px;
-            font-weight: 700;
+            font-weight: 600;
             line-height: 50px;
         }
 

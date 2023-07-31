@@ -103,16 +103,14 @@
             font-feature-settings: 'clig' off, 'liga' off;
             font-size: 40px;
             font-style: normal;
-            font-weight: 700;
+            font-weight: 600;
             line-height: 48px;
             letter-spacing: -1px;
             white-space: pre-wrap;
             @media screen and (max-width: @viewport-xl) {
                 align-self: stretch;
                 font-size: 32px;
-                font-weight: 600;
                 line-height: 35.2px;
-                letter-spacing: -0.64px;
             }
         }
         .sub-title {

@@ -28,10 +28,11 @@
             font-feature-settings: 'clig' off, 'liga' off;
             font-size: 40px;
             font-style: normal;
-            font-weight: 700;
+            font-weight: 600;
             line-height: normal;
             text-transform: capitalize;
             white-space: pre-wrap;
+            letter-spacing: -1px;
             @media screen and (max-width: @viewport-xl) {
                 font-size: 32px;
             }
