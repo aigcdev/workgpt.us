@@ -3,7 +3,7 @@
         <div class="box">
             <div>
                 <SvgIcon name="logo-white" class="logo" />
-                <Nav font-color="#fff" />
+                <Nav theme="dark" />
                 <div class="contact-list">
                     <NuxtLink to="https://twitter.com/workgpt_us">
                         <SvgIcon name="twitter" />

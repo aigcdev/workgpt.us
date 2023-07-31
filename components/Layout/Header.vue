@@ -1,5 +1,5 @@
 <template>
-    <div class="header-container">
+    <div class="header-container" :class="[shadowing ? 'shadowing' : '']">
         <SvgIcon name="logo" class="logo" />
         <Nav />
         <div class="operation">
@@ -11,6 +11,12 @@
 
 <script setup lang="ts">
     import Nav from './Nav.vue'
+
+    const shadowing = ref(document.querySelector('html')!.scrollTop > 0)
+
+    document.onscroll = () => {
+        shadowing.value = document.querySelector('html')!.scrollTop > 0
+    }
 </script>
 
 <style scoped lang="less">
@@ -28,11 +34,17 @@
         max-width: @page-content-max-width;
         margin: 0 auto;
         padding: 0 40px;
+        box-shadow: none;
+        transition: box-shadow 0.2s;
 
         @media screen and (max-width: @viewport-md) {
             padding: 0 20px;
             justify-content: center;
             height: 80px;
+        }
+
+        &.shadowing {
+            box-shadow: 0px 4px 4px 0px rgba(216, 216, 216, 0.25);
         }
     }
 
