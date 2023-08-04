@@ -8,7 +8,7 @@
                     <NuxtLink to="https://chat.workgpt.us/register">
                         Try it now - It’s free
                     </NuxtLink>
-                    <NuxtLink @click="dialogShow = true"> Schedule for Demo </NuxtLink>
+                    <NuxtLink style="cursor: pointer;" @click="() => dialogRef && dialogRef.show()"> Schedule for Demo </NuxtLink>
                 </div>
                 <div class="mobile">
                     <NuxtLink to="https://chat.workgpt.us/register">
@@ -20,20 +20,14 @@
         </div>
         <img v-lazy="introImg" />
     </header>
-    <el-dialog v-model="dialogShow" destroy-on-close>
-        <iframe
-            style="border: none"
-            width="100%"
-            height="520px"
-            src="https://cdn.forms-content.sg-form.com/711331c4-2e0b-11ee-8bb3-da3b37abf17b"
-        />
-    </el-dialog>
+    <ScheduleDialog ref="dialogRef" />
 </template>
 
 <script setup lang="ts">
+    import ScheduleDialog from './ScheduleDialog.vue'
     import introImg from '~/assets/images/intro.png?url'
 
-    const dialogShow = ref(false)
+    const dialogRef = ref<InstanceType<typeof ScheduleDialog> | null>(null)
 </script>
 
 <style scoped lang="less">

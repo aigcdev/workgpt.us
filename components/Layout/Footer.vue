@@ -19,9 +19,14 @@
                     </NuxtLink>
                 </div>
             </div>
-            <div class="subscribe">
+            <div>
                 <div class="title">Subscribe to get latest updates</div>
-                <NuxtLink class="submit-button" @click="dialogShow = true"> Subscribe </NuxtLink>
+                <div class="input">
+                    <input v-model="emailAddress" type="text" placeholder="Your Email address" />
+                    <NuxtLink v-loading="loading" class="submit-button" @click="handleSubscribeBtnClick">
+                        Subscribe
+                    </NuxtLink>
+                </div>
             </div>
             <div class="copyright">
                 <div>© Copyright 2023, All Rights Reserved</div>
@@ -35,20 +40,45 @@
             </div>
         </div>
     </footer>
-    <el-dialog v-model="dialogShow" destroy-on-close>
-        <iframe
-            style="border: none"
-            width="100%"
-            height="520px"
-            src="https://cdn.forms-content.sg-form.com/c753648a-2e0a-11ee-8bb3-da3b37abf17b"
-        />
-    </el-dialog>
 </template>
 
 <script setup lang="ts">
     import Nav from './Nav.vue'
 
-    const dialogShow = ref(false)
+    const emailAddress = ref('')
+    const loading = ref(false)
+
+    const handleSubscribeBtnClick = async () => {
+        if (!emailAddress.value) {
+            return ElMessage.error('Please enter your email address.')
+        }
+
+        const reg = /^[A-Za-z0-9\u4E00-\u9FA5]+@[a-zA-Z0-9_-]+(.[a-zA-Z0-9_-]+)+$/
+        if (!reg.test(emailAddress.value)) {
+            return ElMessage.error('Please enter the correct email address.')
+        }
+
+        try {
+            loading.value = true
+
+            await fetch('https://api.workgpt.us/api/subscribe', {
+                method: 'post',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    email: emailAddress.value,
+                    type: 'Subscribe'
+                })
+            })
+
+            ElMessage.success('Succeed.')
+        } catch (error: any) {
+            ElMessage.error(error.message)
+        } finally {
+            loading.value = false
+        }
+    }
 </script>
 
 <style scoped lang="less">
@@ -79,6 +109,74 @@
                     }
                 }
             }
+            > div:nth-child(2) {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 64px 0;
+                @media screen and (max-width: @viewport-lg) {
+                    align-items: center;
+                }
+                .title {
+                    color: @color-white;
+                    font-size: 24px;
+                    font-style: normal;
+                    font-weight: 600;
+                    line-height: normal;
+                    @media screen and (max-width: @viewport-lg) {
+                        font-size: 16px;
+                    }
+                }
+                .input {
+                    margin-top: 17px;
+                    width: 545px;
+                    height: 52px;
+                    line-height: 52px;
+                    border-radius: 12px;
+                    background: #2c2f45;
+                    display: flex;
+                    align-items: center;
+                    overflow: hidden;
+                    @media screen and (max-width: @viewport-lg) {
+                        max-width: 480px;
+                        width: 100%;
+                        height: 36px;
+                        line-height: 36px;
+                    }
+                    input {
+                        flex: 1;
+                        height: 100%;
+                        padding: 0 23.5px;
+                        outline: none;
+                        background-color: transparent;
+                        box-shadow: none;
+                        color: @color-white;
+                        border: none;
+                        min-width: 0;
+                        @media screen and (max-width: @viewport-lg) {
+                            font-size: 12px;
+                            &::placeholder {
+                                font-size: 12px;
+                            }
+                        }
+                    }
+                    .submit-button {
+                        color: @color-white;
+                        font-size: 14px;
+                        font-style: normal;
+                        font-weight: 500;
+                        height: 100%;
+                        text-align: center;
+                        background: @main-color;
+                        padding: 0 28px;
+                        cursor: pointer;
+                        @media screen and (max-width: @viewport-lg) {
+                            font-size: 12px;
+                            padding: 0 20px;
+                        }
+                    }
+                }
+            }
         }
     }
 
@@ -99,47 +197,6 @@
             }
             + a {
                 margin-left: 34px;
-            }
-        }
-    }
-
-    .subscribe {
-        display: flex;
-        align-items: center;
-        padding: 64px 0;
-        @media screen and (max-width: @viewport-lg) {
-            align-items: center;
-            flex-direction: column;
-        }
-        .title {
-            color: @color-white;
-            font-size: 24px;
-            font-style: normal;
-            font-weight: 600;
-            line-height: normal;
-            @media screen and (max-width: @viewport-lg) {
-                font-size: 18px;
-            }
-        }
-        .submit-button {
-            width: 112px;
-            height: 44px;
-            line-height: 44px;
-            color: @color-white;
-            font-size: 14px;
-            font-style: normal;
-            font-weight: 500;
-            text-align: center;
-            background: @main-color;
-            cursor: pointer;
-            border-radius: 12px;
-            margin-left: 24px;
-            @media screen and (max-width: @viewport-lg) {
-                height: 40px;
-                line-height: 40px;
-                font-size: 12px;
-                margin-left: 0;
-                margin-top: 17px;
             }
         }
     }
