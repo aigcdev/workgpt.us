@@ -27,6 +27,65 @@
         <p class="c2 c10">
             <span class="c3">&nbsp;</span>
         </p>
+        <p class="c2">
+            <span class="c3">
+                WorkGPT's use of information received from Google APIs will adhere to
+                <span class="c5 c21">
+                    <a class="c20" href="https://developers.google.com/terms/api-services-user-data-policy#additional_requirements_for_specific_api_scopes">Google API Services User Data Policy</a>
+                </span>, including the Limited Use requirements.
+            </span>
+        </p>
+        <p class="c2 c10">
+            <span class="c3">&nbsp;</span>
+        </p>
+        <p class="c2">
+            <span class="c8">
+                Limited Use
+            </span>
+        </p>
+        <p class="c2">
+            <span class="c3">
+                Our app strictly complies with all conditions specified in the limited use policy of Google.
+            </span>
+        </p>
+        <p class="c1">
+            <span class="c5 c14">&middot;</span>
+            <span class="c3">
+                Do not allow humans to read the user's data unless you have obtained the user's affirmative agreement to view specific messages, files, or other data.
+            </span>
+        </p>
+        <p class="c1">
+            <span class="c5 c14">&middot;</span>
+            <span class="c3">
+                Do not use or transfer the data for serving ads, including retargeting, personalized, or interest-based advertising.
+            </span>
+        </p>
+        <p class="c1">
+            <span class="c5 c14">&middot;</span>
+            <span class="c3">
+                Limit your use of data to providing or improving user-facing features that are prominent in the requesting application's user interface. All other uses of the data are prohibited.
+            </span>
+        </p>
+        <p class="c1">
+            <span class="c5 c14">&middot;</span>
+            <span class="c3">
+                Limit your use of data to providing or improving user-facing features that are prominent in the requesting application's user interface. All other uses of the data are prohibited.
+            </span>
+        </p>
+        <p class="c1">
+            <span class="c5 c14">&middot;</span>
+            <span class="c3">
+                Only transfer the data to others if necessary to provide or improve user-facing features that are prominent in the requesting application's user interface.
+            </span>
+        </p>
+        <p class="c2">
+            <span class="c3">
+                Our privacy policy page documents in detail what data our app is requesting and why the requests access to Google user data.
+            </span>
+        </p>
+        <p class="c2 c10">
+            <span class="c3">&nbsp;</span>
+        </p>
         <p class="c2 c10">
             <span class="c8">1. Application Scope of the Privacy Policy</span>
         </p>
@@ -275,11 +334,7 @@
                 WorkGPT users, we may not be able to remove them from our servers or make them
                 unavailable to anyone you have shared them with. Sending and sharing text messages,
                 photos, screenshots, videos or other communications in the WorkGPT application is
-                your decision. By choosing to share that information, you should understand that you
-                may no longer be able to control how that information is used and that it may become
-                publicly available (depending in part on your actions or the actions of others with
-                whom you have shared the information). WorkGPT is not responsible for any use or
-                misuse of information you share.
+                your decision.
             </span>
         </p>
         <p class="c0">
