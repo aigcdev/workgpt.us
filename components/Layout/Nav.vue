@@ -32,6 +32,7 @@
         </el-dropdown>
         <div class="item" @click="scrollTo('features')">Features</div>
         <div class="item" @click="scrollTo('useCases')">Use Cases</div>
+        <NuxtLink class="item" to="https://blog.workgpt.us/blog">blog</NuxtLink>
     </div>
 </template>
 
