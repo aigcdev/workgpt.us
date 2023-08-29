@@ -40,56 +40,56 @@
             title: 'Email Scraper',
             intro: 'Scrape all the emails on the website and sync to Google Sheet.',
             time: '15 min',
-            to: 'https://blog.workgpt.us/scraping-email-address-to-google-sheet'
+            to: 'https://howto.workgpt.us/scraping-email-address-to-google-sheet'
         },
         {
             iconPathList: [icon4, icon5, icon3],
             title: 'Twitter Manager',
             intro: 'Post the news with tags to Twitter everyday 10am.',
             time: '30 min',
-            to: 'https://blog.workgpt.us/automating-twitter-posts-with-daily-hot-news-using-workgpt'
+            to: 'https://howto.workgpt.us/automating-twitter-posts-with-daily-hot-news-using-workgpt'
         },
         {
             iconPathList: [icon6, icon2, icon3],
             title: 'News Agent',
             intro: 'Get hacker news and put result in a Google Sheet table.',
             time: '10 min',
-            to: 'https://blog.workgpt.us/extract-news-source-link-and-send-to-email'
+            to: 'https://howto.workgpt.us/extract-news-source-link-and-send-to-email'
         },
         {
             iconPathList: [icon7, icon8, icon3],
             title: 'Meeting Reminder',
             intro: 'Send email with the today’s meeting link.',
             time: '3 min',
-            to: 'https://blog.workgpt.us/schedule-meeting-to-google-calendar'
+            to: 'https://howto.workgpt.us/schedule-meeting-to-google-calendar'
         },
         {
             iconPathList: [icon9, icon3],
             title: 'Database Agent',
             intro: 'Check the number of user registered in 2023.',
             time: '1 hour',
-            to: 'https://blog.workgpt.us/automate-customer-inquiry-responses-via-internal-service-api'
+            to: 'https://howto.workgpt.us/automate-customer-inquiry-responses-via-internal-service-api'
         },
         {
             iconPathList: [icon1, icon3],
             title: 'Blog Manager',
             intro: 'Generate blog and post it to my blog.',
             time: '40 min',
-            to: 'https://blog.workgpt.us/create-the-draft-of-blog-post-on-given-topictheme-with-workgpt'
+            to: 'https://howto.workgpt.us/create-the-draft-of-blog-post-on-given-topictheme-with-workgpt'
         },
         {
             iconPathList: [icon10, icon2, icon3],
             title: 'Reviewer',
             intro: 'Get the product review from Google Search to Google Sheet.',
             time: '5 min',
-            to: 'https://blog.workgpt.us/colloect-review-from-google-search-to-google-sheet'
+            to: 'https://howto.workgpt.us/colloect-review-from-google-search-to-google-sheet'
         },
         {
             iconPathList: [icon3],
             title: 'English Translator',
             intro: 'Translate any content into English.',
             time: '40 min',
-            to: 'https://blog.workgpt.us/translate-any-content-into-english'
+            to: 'https://howto.workgpt.us/translate-any-content-into-english'
         }
     ]
 </script>
