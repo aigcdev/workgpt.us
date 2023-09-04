@@ -1,6 +1,7 @@
 <template>
     <header id="home" class="intro-container">
         <div>
+            <img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=412004&theme=light" alt="WorkGPT - AI&#0032;Chatbot&#0045;based&#0032;virtual&#0032;assistant | Product Hunt" style="width: 250px; height: 54px; margin-bottom: 10px;" />
             <div class="title"> {{ 'Customized \nChatGPT \nfor your work' }} </div>
             <div class="intro"> Chat with your private APl, tools, data. </div>
             <div class="operation">
