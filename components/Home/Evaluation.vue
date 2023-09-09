@@ -20,7 +20,7 @@
 
     const contentList = [
         {
-            title: 'Chat with \nyour APIs/APP',
+            title: 'Chat with \nyour API / APPs',
             subTitle: 'API integration made easy.',
             intro: 'Seamlessly integrate with your own internal data and query any data anytime, without the need for programmer support. Execute requested tasks and return the results.',
             imagePath: image1,

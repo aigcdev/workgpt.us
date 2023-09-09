@@ -43,8 +43,8 @@
     withDefaults(
         defineProps<{
             theme?: 'light' | 'dark'
-            showHome: boolean
-            showProducts: boolean
+            showHome?: boolean
+            showProducts?: boolean
         }>(),
         {
             theme: 'light',
