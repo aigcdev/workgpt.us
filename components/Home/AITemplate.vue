@@ -1,6 +1,6 @@
 <template>
     <section id="ai-template" class="ai-template-container">
-        <Title title="Template" sub-title="" />
+        <Title title="Templates" sub-title="" />
         <div class="tag-list">
             <div
                 v-for="item in tagList"

@@ -29,7 +29,7 @@
         </p>
         <p class="c2">
             <span class="c3">
-                WorkGPT's use of information received from Google APIs will adhere to
+                WorkGPT's use and transfer to any other app of information received from Google APIs will adhere to
                 <span class="c5 c21">
                     <a class="c20" href="https://developers.google.com/terms/api-services-user-data-policy#additional_requirements_for_specific_api_scopes">Google API Services User Data Policy</a>
                 </span>, including the Limited Use requirements.
