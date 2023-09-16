@@ -356,6 +356,7 @@
                 transition: all 0.3s ease 0s;
                 border: 1px solid #e0e0e0;
                 border-radius: 999px;
+                cursor: pointer;
                 @media screen and (max-width: @viewport-lg) {
                     font-size: 14px;
                     padding: 6px 15px;
@@ -383,10 +384,16 @@
                 border-radius: 5px;
                 position: absolute;
                 box-sizing: content-box;
-                right: 4px;
-                top: 4px;
+                right: 10px;
+                top: 10px;
                 width: 20px;
                 height: 20px;
+                @media screen and (max-width: @viewport-lg) {
+                    right: 4px;
+                    top: 4px;
+                    width: 20px;
+                    height: 20px;
+                }
                 svg {
                     height: 100%;
                     width: 100%;
