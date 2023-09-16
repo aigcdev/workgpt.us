@@ -1386,6 +1386,11 @@
   resolved "https://registry.npmmirror.com/@types/estree/-/estree-1.0.1.tgz#aa22750962f3bf0e79d753d3cc067f010c95f194"
   integrity sha512-LG4opVs2ANWZ1TJoKc937iMmNstM/d0ae1vNbnBvBhqCSezgVUOzcLCqbI5elV8Vy6WKwKjaqR+zO9VKirBBCA==
 
+"@types/fingerprintjs2@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.npmmirror.com/@types/fingerprintjs2/-/fingerprintjs2-2.0.0.tgz#3af76e165416fa75261bbce4393f5445fca4cadd"
+  integrity sha512-isSTwNnW5I6zGZnpkinmVcV9pJqr7cLELns+tXDYzskIOAb2J+iCQ0mQJ9bRjHJhZfdlTFXZoCYK9ZgT3oMWXQ==
+
 "@types/http-proxy@^1.17.11":
   version "1.17.11"
   resolved "https://registry.npmmirror.com/@types/http-proxy/-/http-proxy-1.17.11.tgz#0ca21949a5588d55ac2b659b69035c84bd5da293"
@@ -4275,6 +4280,11 @@ findup-sync@^4.0.0:
     is-glob "^4.0.0"
     micromatch "^4.0.2"
     resolve-dir "^1.0.1"
+
+fingerprintjs2@^2.1.4:
+  version "2.1.4"
+  resolved "https://registry.npmmirror.com/fingerprintjs2/-/fingerprintjs2-2.1.4.tgz#a39deb947aa187c098306a0b5dd41ceaa2e15fc5"
+  integrity sha512-veP2yVsnYvjDVkzZMyIEwpqCAQfsBLH+U4PK5MlFAnLjZrttbdRqEArE1fPcnJFz5oS5CrdONbsV7J6FGpIJEQ==
 
 flat-cache@^3.0.4:
   version "3.0.4"
