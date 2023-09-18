@@ -1,10 +1,35 @@
 <template>
-    <div class="chat-icon" @click="showing = !showing">
-        <img src="/logo.png" />
+    <div
+        v-loading="!isConfigInitialized"
+        class="chat-icon"
+        @click="isConfigInitialized && (showing = !showing)"
+    >
+        <img v-if="isConfigInitialized" :src="config.logo" />
     </div>
     <Transition name="chat-dialog">
-        <div v-show="showing" class="chat-dialog">
-            <div class="container">
+        <div v-if="isConfigInitialized" v-show="showing" class="chat-dialog">
+            <div v-if="isFormShow" class="container form">
+                <div>Before starting, please fill in the following information.</div>
+                <el-form ref="formRef" :model="formModel" label-position="top">
+                    <el-form-item
+                        v-for="item in collections"
+                        :key="item.name"
+                        :label="item.name"
+                        :prop="item.name"
+                        v-bind="item"
+                    >
+                        <el-input v-model="(formModel as any)[item.name]" />
+                    </el-form-item>
+                    <el-button
+                        type="primary"
+                        style="background-color: #0056f5"
+                        @click="handleFormSubmit"
+                    >
+                        Submit
+                    </el-button>
+                </el-form>
+            </div>
+            <div v-else v-loading="!isChatBotInitialized" class="container">
                 <div ref="messageListRef" class="message-list">
                     <div
                         v-for="(item, index) in messageList"
@@ -12,19 +37,29 @@
                         class="message-item"
                         :class="item.type === ChatType.BOT ? 'bot' : 'user'"
                     >
-                        <div v-if="!item.loading" class="content">{{ item.content }}</div>
-                        <img v-else src="/logo.png" class="loading" />
+                        <img
+                            :src="
+                                item.type === ChatType.BOT
+                                    ? config.avatars.bot
+                                    : config.avatars.user
+                            "
+                            class="avatar"
+                        />
+                        <div class="box">
+                            <div v-if="!item.loading" class="content">{{ item.content }}</div>
+                            <SvgIcon v-else class="loading" name="loading" color="#0056f5" />
+                        </div>
                     </div>
                 </div>
                 <div class="operation">
                     <div class="template-list">
                         <div
-                            v-for="(item, index) in templateList"
-                            :key="index"
+                            v-for="item in templateList"
+                            :key="item.id"
                             class="template-item"
-                            @click="inputValue = item"
+                            @click="handleTemplateClick(item)"
                         >
-                            {{ item }}
+                            {{ item.prompt }}
                         </div>
                     </div>
                     <div class="input">
@@ -46,20 +81,50 @@
 <script setup lang="ts">
     import Fingerprint2 from 'fingerprintjs2'
 
-    const showing = ref(false)
+    const BASE_URL = 'https://api.workgpt.us'
+    const APPID = 'WORKGPT'
 
     enum ChatType {
         BOT = 0,
         USER = 1
     }
 
-    const { data: templateList } = await useAsyncData(
-        'chatTemplates',
-        () => $fetch<{ promptTemplates: string[] }>('https://api.workgpt.us/api/chatTemplates'),
-        {
-            transform: (result: { promptTemplates: string[] }) => result.promptTemplates
-        }
-    )
+    const isFormShow = ref(false)
+    const formRef = ref()
+    const formModel = reactive({})
+
+    const config = reactive({
+        avatars: {
+            bot: '',
+            user: ''
+        },
+        logo: '',
+        redirect: {
+            href: '',
+            name: '',
+            warn: ''
+        },
+        welcome: ''
+    })
+    const isConfigInitialized = ref(false)
+
+    type Template = {
+        id: number
+        prompt: string
+    }
+    const templateList = ref<Template[]>([])
+
+    type Collection = {
+        name: string
+        type?: 'string'
+        required: boolean
+    }
+    const collections = ref<Collection[]>([])
+    const checkCollection = () => {
+        return !collections.value.some(item => {
+            return item.required && !localStorage.getItem('collection_' + item.name)
+        })
+    }
 
     type ChatItem = {
         type: ChatType
@@ -69,31 +134,53 @@
     const messageList: ChatItem[] = reactive([])
     const inputValue = ref('')
     const messageListRef = ref<HTMLDivElement>()
+    const showing = ref(false)
+    const isChatBotInitialized = ref(false)
+    let chatToken = ''
+
+    const initBot = async () => {
+        isChatBotInitialized.value = false
+        const isCollectionCompleted = checkCollection()
+
+        let _collections: Record<string, string> = {}
+        if (!isCollectionCompleted) {
+            _collections = await getCollection()
+            Object.keys(_collections).forEach(key => {
+                localStorage.setItem('collection_' + key, _collections[key])
+            })
+        } else {
+            collections.value.forEach(item => {
+                Reflect.set(
+                    _collections,
+                    item.name,
+                    localStorage.getItem('collection_' + item.name)
+                )
+            })
+        }
+
+        chatToken = await fetchInitChatBotAndGetToken(_collections)
+
+        loadLocalStorageMessageList()
+
+        isChatBotInitialized.value = true
+    }
+
+    let resolveCollection: (value: Record<string, string>) => void
+    const getCollection = () => {
+        return new Promise<Record<string, string>>(resolve => {
+            isFormShow.value = true
+
+            resolveCollection = value => {
+                resolve(value)
+                isFormShow.value = false
+            }
+        })
+    }
 
     const createFingerprint = async () => {
         const components = await Fingerprint2.getPromise()
         const values = components.map(component => component.value)
         return Fingerprint2.x64hash128(values.join(''), 31)
-    }
-
-    const fetchChat = async (content: string) => {
-        const result = await $fetch<any>('https://api.workgpt.us/api/chatLLM', {
-            method: 'POST',
-            headers: {
-                Authorization: '8780ebdd0ee734413def6fd563c5cbfd'
-            },
-            body: {
-                prompt: content,
-                conversationId: await createFingerprint()
-            },
-            ignoreResponseError: true
-        })
-
-        if (result.error) {
-            return result.error.message || ''
-        } else {
-            return result.choices[0]?.message?.content || ''
-        }
     }
 
     const chat = async () => {
@@ -128,6 +215,7 @@
     }
 
     const loadLocalStorageMessageList = () => {
+        messageList.splice(0, messageList.length)
         const listString = localStorage.getItem('messageList')
 
         if (listString) {
@@ -140,7 +228,7 @@
         if (!messageList.length) {
             messageList.push({
                 type: ChatType.BOT,
-                content: 'Hi there, ask me anything!'
+                content: config.welcome
             })
         }
 
@@ -157,7 +245,87 @@
         })
     }
 
-    onMounted(loadLocalStorageMessageList)
+    const handleTemplateClick = (template: Template) => {
+        // TODO: send id when user check template
+        inputValue.value = template.prompt
+    }
+
+    const handleFormSubmit = async () => {
+        if (await formRef.value.validate()) {
+            resolveCollection(formModel)
+        }
+    }
+
+    const fetchChat = async (content: string) => {
+        if (!chatToken) {
+            await initBot()
+        }
+        const result = await $fetch<any>('/api/chatLLM', {
+            method: 'POST',
+            baseURL: BASE_URL,
+            headers: {
+                Authorization: chatToken
+            },
+            body: {
+                prompt: content,
+                conversationId: await createFingerprint()
+            },
+            ignoreResponseError: true
+        })
+
+        if (result.error) {
+            return result.error.message || ''
+        } else {
+            return result.choices[0]?.message?.content || ''
+        }
+    }
+
+    const fetchGetConfig = async () => {
+        const result = await $fetch<any>('/api/chatbot/config', {
+            method: 'GET',
+            baseURL: BASE_URL,
+            headers: {
+                Authorization: '8780ebdd0ee734413def6fd563c5cbfd'
+            },
+            params: {
+                appId: APPID
+            }
+        })
+        const data = result.data
+
+        templateList.value = data.promptTemplates
+        collections.value = data.collections
+
+        Object.assign(config, {
+            avatars: {
+                bot: data.avatars.bot.src,
+                user: data.avatars.user.src
+            },
+            logo: data.logo.src,
+            redirect: data.redirect,
+            welcome: data.welcome
+        })
+
+        isConfigInitialized.value = true
+    }
+
+    const fetchInitChatBotAndGetToken = async (params: Record<string, string>) => {
+        const result = await $fetch<any>('/api/chatbot', {
+            method: 'GET',
+            baseURL: BASE_URL,
+            params: {
+                appId: APPID,
+                ...params
+            }
+        })
+
+        return result?.data?.token || '8780ebdd0ee734413def6fd563c5cbfd'
+    }
+
+    onMounted(async () => {
+        await fetchGetConfig()
+        initBot()
+    })
 </script>
 
 <style scoped lang="less">
@@ -168,6 +336,7 @@
         box-shadow: 0 0 8px 2px rgba(22, 58, 71, 0.3);
         box-sizing: border-box;
         background-color: #fff;
+        overflow: hidden;
 
         cursor: pointer;
         position: fixed;
@@ -259,6 +428,10 @@
         }
     }
 
+    .form {
+        pointer-events: auto;
+    }
+
     .message-list {
         flex: 1;
         gap: 25px;
@@ -266,57 +439,71 @@
         flex-direction: column;
         overflow-y: auto;
         .message-item {
-            width: fit-content;
-            padding: 15px;
-            background-color: @color-white;
-            border: 1px solid #e0e0e0;
-            border-radius: 25px;
-            white-space: pre-wrap;
-            word-break: break-word;
-            color: @default-font-color;
-            font-feature-settings: 'clig' off, 'liga' off;
-            font-size: 16px;
-            font-style: normal;
-            font-weight: 400;
-            line-height: 24px;
-            display: flex;
-            align-items: center;
+            display: inline-flex;
+            gap: 10px;
+            > .box {
+                width: fit-content;
+                padding: 15px;
+                background-color: @color-white;
+                border: 1px solid #e0e0e0;
+                border-radius: 25px;
+                white-space: pre-wrap;
+                word-break: break-word;
+                color: @default-font-color;
+                font-feature-settings: 'clig' off, 'liga' off;
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 24px;
+                display: flex;
+                align-items: center;
 
-            @media screen and (max-width: @viewport-lg) {
-                font-size: 14px;
-                padding: 10px;
-            }
+                @media screen and (max-width: @viewport-lg) {
+                    font-size: 14px;
+                    padding: 10px;
+                }
 
-            .content {
-                display: inline-block;
-            }
+                .content {
+                    display: inline-block;
+                }
 
-            .loading {
-                width: 25px;
-                height: 25px;
-                animation: loading-rotate 1.5s infinite;
-                animation-timing-function: linear;
-                display: inline-block;
+                .loading {
+                    width: 25px;
+                    height: 25px;
+                    animation: loading-rotate 1.5s infinite;
+                    animation-timing-function: linear;
+                    display: inline-block;
 
-                @keyframes loading-rotate {
-                    0% {
-                        transform: rotate(0deg);
-                    }
+                    @keyframes loading-rotate {
+                        0% {
+                            transform: rotate(0deg);
+                        }
 
-                    100% {
-                        transform: rotate(360deg);
+                        100% {
+                            transform: rotate(360deg);
+                        }
                     }
                 }
             }
-
+            > .avatar {
+                height: 40px;
+                width: 40px;
+                border-radius: 50%;
+            }
             &.bot {
-                border-top-left-radius: 0;
+                flex-direction: row;
+                > .box {
+                    border-top-left-radius: 0;
+                }
             }
             &.user {
-                border-top-right-radius: 0;
-                background-color: @main-color;
+                flex-direction: row-reverse;
                 align-self: flex-end;
-                color: @color-white;
+                > .box {
+                    border-top-right-radius: 0;
+                    background-color: @main-color;
+                    color: @color-white;
+                }
             }
         }
     }
@@ -388,9 +575,10 @@
                 top: 10px;
                 width: 20px;
                 height: 20px;
+                border: none;
                 @media screen and (max-width: @viewport-lg) {
                     right: 4px;
-                    top: 4px;
+                    top: 6px;
                     width: 20px;
                     height: 20px;
                 }
