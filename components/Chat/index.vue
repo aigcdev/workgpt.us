@@ -1,9 +1,5 @@
 <template>
-    <div
-        v-loading="!isConfigInitialized"
-        class="chat-icon"
-        @click="isConfigInitialized && (showing = !showing)"
-    >
+    <div v-loading="!isConfigInitialized" class="chat-icon" @click="handleChatIconClick">
         <img v-if="isConfigInitialized" :src="config.logo" />
     </div>
     <Transition name="chat-dialog">
@@ -67,6 +63,7 @@
                             v-model="inputValue"
                             placeholder="Ask a question"
                             @keyup.enter="chat"
+                            @change="handleInputChange"
                         />
                         <button class="button" @click="chat">
                             <SvgIcon name="plane" />
@@ -113,6 +110,7 @@
         prompt: string
     }
     const templateList = ref<Template[]>([])
+    let promptTemplateId: number | undefined
 
     type Collection = {
         name: string
@@ -245,8 +243,17 @@
         })
     }
 
+    const handleChatIconClick = () => {
+        isConfigInitialized && (showing.value = !showing.value)
+        showing.value && scrollToBottom()
+    }
+
+    const handleInputChange = () => {
+        promptTemplateId = undefined
+    }
+
     const handleTemplateClick = (template: Template) => {
-        // TODO: send id when user check template
+        promptTemplateId = template.id
         inputValue.value = template.prompt
     }
 
@@ -267,6 +274,7 @@
                 Authorization: chatToken
             },
             body: {
+                promptTemplateId,
                 prompt: content,
                 conversationId: await createFingerprint()
             },
@@ -309,17 +317,17 @@
         isConfigInitialized.value = true
     }
 
-    const fetchInitChatBotAndGetToken = async (params: Record<string, string>) => {
+    const fetchInitChatBotAndGetToken = async (data: Record<string, string>) => {
         const result = await $fetch<any>('/api/chatbot', {
-            method: 'GET',
+            method: 'POST',
             baseURL: BASE_URL,
-            params: {
+            body: {
                 appId: APPID,
-                ...params
+                ...data
             }
         })
 
-        return result?.data?.token || '8780ebdd0ee734413def6fd563c5cbfd'
+        return result?.data?.token || ''
     }
 
     onMounted(async () => {
