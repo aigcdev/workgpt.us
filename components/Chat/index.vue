@@ -296,9 +296,6 @@
         const result = await $fetch<any>('/api/chatbot/config', {
             method: 'GET',
             baseURL: BASE_URL,
-            headers: {
-                Authorization: '8780ebdd0ee734413def6fd563c5cbfd'
-            },
             params: {
                 appId: APPID
             }

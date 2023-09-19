@@ -29,58 +29,70 @@
         </p>
         <p class="c2">
             <span class="c3">
-                WorkGPT's use and transfer to any other app of information received from Google APIs will adhere to
+                WorkGPT's use and transfer to any other app of information received from Google APIs
+                will adhere to
                 <span class="c5 c21">
-                    <a class="c20" href="https://developers.google.com/terms/api-services-user-data-policy#additional_requirements_for_specific_api_scopes">Google API Services User Data Policy</a>
-                </span>, including the Limited Use requirements.
+                    <a
+                        class="c20"
+                        href="https://developers.google.com/terms/api-services-user-data-policy#additional_requirements_for_specific_api_scopes"
+                        >Google API Services User Data Policy</a
+                    > </span
+                >, including the Limited Use requirements.
             </span>
         </p>
         <p class="c2 c10">
             <span class="c3">&nbsp;</span>
         </p>
         <p class="c2">
-            <span class="c8">
-                Limited Use
+            <span class="c8"> Limited Use </span>
+        </p>
+        <p class="c2">
+            <span class="c3">
+                Our app strictly complies with all conditions specified in the limited use policy of
+                Google.
+            </span>
+        </p>
+        <p class="c1">
+            <span class="c5 c14">&middot;</span>
+            <span class="c3">
+                Do not allow humans to read the user's data unless you have obtained the user's
+                affirmative agreement to view specific messages, files, or other data.
+            </span>
+        </p>
+        <p class="c1">
+            <span class="c5 c14">&middot;</span>
+            <span class="c3">
+                Do not use or transfer the data for serving ads, including retargeting,
+                personalized, or interest-based advertising.
+            </span>
+        </p>
+        <p class="c1">
+            <span class="c5 c14">&middot;</span>
+            <span class="c3">
+                Limit your use of data to providing or improving user-facing features that are
+                prominent in the requesting application's user interface. All other uses of the data
+                are prohibited.
+            </span>
+        </p>
+        <p class="c1">
+            <span class="c5 c14">&middot;</span>
+            <span class="c3">
+                Limit your use of data to providing or improving user-facing features that are
+                prominent in the requesting application's user interface. All other uses of the data
+                are prohibited.
+            </span>
+        </p>
+        <p class="c1">
+            <span class="c5 c14">&middot;</span>
+            <span class="c3">
+                Only transfer the data to others if necessary to provide or improve user-facing
+                features that are prominent in the requesting application's user interface.
             </span>
         </p>
         <p class="c2">
             <span class="c3">
-                Our app strictly complies with all conditions specified in the limited use policy of Google.
-            </span>
-        </p>
-        <p class="c1">
-            <span class="c5 c14">&middot;</span>
-            <span class="c3">
-                Do not allow humans to read the user's data unless you have obtained the user's affirmative agreement to view specific messages, files, or other data.
-            </span>
-        </p>
-        <p class="c1">
-            <span class="c5 c14">&middot;</span>
-            <span class="c3">
-                Do not use or transfer the data for serving ads, including retargeting, personalized, or interest-based advertising.
-            </span>
-        </p>
-        <p class="c1">
-            <span class="c5 c14">&middot;</span>
-            <span class="c3">
-                Limit your use of data to providing or improving user-facing features that are prominent in the requesting application's user interface. All other uses of the data are prohibited.
-            </span>
-        </p>
-        <p class="c1">
-            <span class="c5 c14">&middot;</span>
-            <span class="c3">
-                Limit your use of data to providing or improving user-facing features that are prominent in the requesting application's user interface. All other uses of the data are prohibited.
-            </span>
-        </p>
-        <p class="c1">
-            <span class="c5 c14">&middot;</span>
-            <span class="c3">
-                Only transfer the data to others if necessary to provide or improve user-facing features that are prominent in the requesting application's user interface.
-            </span>
-        </p>
-        <p class="c2">
-            <span class="c3">
-                Our privacy policy page documents in detail what data our app is requesting and why the requests access to Google user data.
+                Our privacy policy page documents in detail what data our app is requesting and why
+                the requests access to Google user data.
             </span>
         </p>
         <p class="c2 c10">
@@ -143,6 +155,56 @@
         </p>
         <p class="c2">
             <span class="c8">&nbsp;</span>
+        </p>
+        <p class="c2">
+            <span class="c13"> WorkGPT Services </span>
+        </p>
+        <p class="c2 c12">
+            <span class="c3">
+                The Services allow you to integrate and create actions or commands between various
+                third-party applications. To connect third-party applications, you must have an
+                account with each third-party application you integrate, and the Services will
+                require you to authenticate with each application. We will store the login
+                credentials for each third-party application that you authenticate to allow us to
+                continue to provide the Services. When you enable the Services, the third-party
+                applications you integrate will provide us with access to the information you
+                provided to the third-party application. When you integrate third-party
+                applications, we will collect the information that is necessary to enable access to
+                the third-party application and any data or content contained within the third-party
+                application required to affect the action or command. The third-party application
+                will share information with us, and we will share information between third-party
+                applications. We are not responsible for how any third-party application collects,
+                processes uses, retains, or discloses your information. The way a third-party
+                application process information is governed by the policies of the third-party
+                application. We disclaim all liability or damage which may arise from the practices,
+                actions, or omissions of any third-party application that you integrate.
+            </span>
+            <br />
+            <br />
+        </p>
+        <p class="c2">
+            <span class="c13"> Content or Information You Provide in the Services: </span>
+        </p>
+        <p class="c2 c12">
+            <span class="c3">
+                The Services allow you to create connections or integrations between the third-party
+                applications you use. When you use the Services, information or content is
+                transferred from one application to another application. We collect the information
+                that is transferred between the third-party applications. We describe the
+                information we collect through your use of the Apps.
+            </span>
+            <br />
+            <br />
+            <span class="c3">
+                Other users may provide information about individuals when they submit content or
+                information through the Apps. For example, if a user sets up a task that allows
+                automated calendaring, that user will share information about the individuals they
+                schedule meetings with via the task. When you integrate our Apps with a third-party
+                application, the information we receive depends on the settings, permissions, and
+                privacy Statement controlled by that third-party application.
+            </span>
+            <br />
+            <br />
         </p>
         <p class="c2 c10">
             <span class="c8">2. Information You Provide and We Collect</span>
