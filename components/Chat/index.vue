@@ -10,7 +10,6 @@
                     <el-form-item
                         v-for="item in collections"
                         :key="item.name"
-                        :label="item.name"
                         :prop="item.name"
                         v-bind="item"
                     >
@@ -115,6 +114,7 @@
     type Collection = {
         name: string
         type?: 'string'
+        label: string
         required: boolean
     }
     const collections = ref<Collection[]>([])
@@ -239,7 +239,11 @@
 
     const scrollToBottom = () => {
         nextTick(() => {
-            messageListRef.value!.scrollTop = messageListRef.value!.scrollHeight
+            if (!messageListRef.value) {
+                return
+            }
+
+            messageListRef.value.scrollTop = messageListRef.value.scrollHeight
         })
     }
 
