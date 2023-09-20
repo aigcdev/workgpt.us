@@ -5,24 +5,26 @@
     <Transition name="chat-dialog">
         <div v-if="isConfigInitialized" v-show="showing" class="chat-dialog">
             <div v-if="isFormShow" class="container form">
-                <div>Before starting, please fill in the following information.</div>
-                <el-form ref="formRef" :model="formModel" label-position="top">
-                    <el-form-item
-                        v-for="item in collections"
-                        :key="item.name"
-                        :prop="item.name"
-                        v-bind="item"
-                    >
-                        <el-input v-model="(formModel as any)[item.name]" />
-                    </el-form-item>
-                    <el-button
-                        type="primary"
-                        style="background-color: #0056f5"
-                        @click="handleFormSubmit"
-                    >
-                        Submit
-                    </el-button>
-                </el-form>
+                <div>{{ config.collection_msg }}</div>
+                <div style="flex: 1; overflow-y: auto">
+                    <el-form ref="formRef" :model="formModel" label-position="top">
+                        <el-form-item
+                            v-for="item in collections"
+                            :key="item.name"
+                            :prop="item.name"
+                            v-bind="item"
+                        >
+                            <el-input v-model="(formModel as any)[item.name]" />
+                        </el-form-item>
+                    </el-form>
+                </div>
+                <el-button
+                    type="primary"
+                    style="background-color: #0056f5; width: fit-content"
+                    @click="handleFormSubmit"
+                >
+                    Submit
+                </el-button>
             </div>
             <div v-else v-loading="!isChatBotInitialized" class="container">
                 <div ref="messageListRef" class="message-list">
@@ -41,7 +43,7 @@
                             class="avatar"
                         />
                         <div class="box">
-                            <div v-if="!item.loading" class="content">{{ item.content }}</div>
+                            <div v-if="!item.loading" class="content" v-html="item.content"></div>
                             <SvgIcon v-else class="loading" name="loading" color="#0056f5" />
                         </div>
                     </div>
@@ -100,7 +102,8 @@
             name: '',
             warn: ''
         },
-        welcome: ''
+        welcome: '',
+        collection_msg: ''
     })
     const isConfigInitialized = ref(false)
 
@@ -286,6 +289,9 @@
         })
 
         if (result.error) {
+            if (result.error.message === 'Not Enough Quotas') {
+                return `${config.redirect.warn} Click here: <a href="${config.redirect.href}">${config.redirect.name}</a>`
+            }
             return result.error.message || ''
         } else {
             return result.choices[0]?.message?.content || ''
@@ -312,7 +318,8 @@
             },
             logo: data.logo.src,
             redirect: data.redirect,
-            welcome: data.welcome
+            welcome: data.welcome,
+            collection_msg: data.collection_msg
         })
 
         isConfigInitialized.value = true
@@ -428,7 +435,7 @@
 
         > .container {
             border-radius: 24px;
-            padding: 20px;
+            padding: 52px 20px;
             gap: 20px;
             display: flex;
             flex-direction: column;
