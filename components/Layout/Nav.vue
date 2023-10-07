@@ -33,6 +33,7 @@
         <div class="item" @click="scrollTo('features')">Features</div>
         <div class="item" @click="scrollTo('useCases')">Use Cases</div>
         <NuxtLink class="item" to="https://blog.workgpt.us/blog">blog</NuxtLink>
+        <NuxtLink class="item" to="https://forms.gle/CyG211rBL57BQD4h9">Affiliate Program</NuxtLink>
     </div>
 </template>
 
@@ -89,6 +90,16 @@
             text-transform: capitalize;
             & + .item {
                 margin-left: 40px;
+            }
+        }
+
+        @media screen and (min-width: @viewport-lg) and (max-width: @viewport-xl) {
+            padding: 0 20px 0 30px;
+            margin-left: 0;
+            justify-content: center;
+            gap: 25px;
+            .item.item.item {
+                margin-left: 0;
             }
         }
     }
