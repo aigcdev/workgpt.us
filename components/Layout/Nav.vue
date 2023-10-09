@@ -102,6 +102,18 @@
                 margin-left: 0;
             }
         }
+
+        @media screen and (max-width: @viewport-lg) {
+            padding: 0 20px 0 30px;
+            margin-left: 0;
+            justify-content: center;
+            column-gap: 25px;
+            row-gap: 10px;
+            flex-wrap: wrap;
+            .item.item.item {
+                margin-left: 0;
+            }
+        }
     }
 
     .el-icon--right {
