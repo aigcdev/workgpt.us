@@ -723,6 +723,12 @@
         padding: 72pt 72pt 72pt 72pt;
     }
 
+    @media screen and (max-width: 767px) {
+        .c18 {
+            padding: 50pt 20pt;
+        }
+    }
+
     .c20 {
         color: inherit;
         text-decoration: inherit;
