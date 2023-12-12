@@ -3,7 +3,7 @@
         <div>
             <div class="container">
                 <div class="main-title">
-                    <h1>Your Telegram reply bot powered by ChatGPT & GPTs</h1>
+                    <h1>Your Telegram reply bot</h1>
                     <div>
                         Delegate your Telegram account to GPT, reply message automatically on your
                         behalf.
@@ -308,9 +308,19 @@
 
 <style lang="less">
     .container {
-        max-width: 940px;
+        max-width: @page-content-max-width;
         margin: 0 auto;
-        padding: 120px 0;
+        padding: 120px 40px;
+
+        @media screen and (max-width: @viewport-xl) {
+            border-bottom: 1px solid #d8d8d8;
+            margin-bottom: 80px;
+        }
+
+        @media screen and (max-width: @viewport-md) {
+            padding-left: 20px;
+            padding-right: 20px;
+        }
     }
 
     .container > .main-title {
@@ -331,17 +341,14 @@
 
     .container > .main-title > div {
         color: #000;
-        text-align: center;
         font-size: 20px;
         font-weight: 450;
         line-height: 30px;
-        max-width: 418px;
         margin: 24px auto 0;
     }
 
     .sub-title > h2 {
         color: var(--base-gray, #000);
-        text-align: center;
         font-size: 32px;
         font-weight: 700;
         line-height: 36px;
@@ -350,8 +357,7 @@
 
     .sub-title > div {
         color: var(--base-gray, #000);
-        text-align: center;
-        font-size: 14px;
+        font-size: 16px;
         font-weight: 450;
         line-height: 20px;
         margin-top: 16px;
@@ -364,7 +370,7 @@
     .try > .step > .title {
         margin-bottom: 12px;
         color: var(--gray-700, #272d37);
-        font-size: 14px;
+        font-size: 16px;
         font-weight: 700;
         line-height: 20px;
         /* 142.857% */
@@ -374,7 +380,7 @@
     .try > .step > .desc {
         margin-bottom: 12px;
         color: var(--gray-50, #5f6d7e);
-        font-size: 14px;
+        font-size: 16px;
         font-weight: 450;
         line-height: 24px;
         /* 171.429% */
@@ -409,7 +415,7 @@
 
     .create > .form > .field > .title {
         color: #000;
-        font-size: 14px;
+        font-size: 16px;
         font-weight: 700;
         line-height: 20px;
         /* 142.857% */
