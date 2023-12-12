@@ -1,7 +1,9 @@
 <template>
     <div class="header-container" :class="[shadowing ? 'shadowing' : '']">
         <div>
-            <SvgIcon name="logo" class="logo" />
+            <NuxtLink to="/">
+                <SvgIcon name="logo" class="logo" />
+            </NuxtLink>
             <Nav />
             <div class="operation">
                 <NuxtLink class="login" to="https://chat.workgpt.us/login">Login</NuxtLink>

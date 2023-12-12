@@ -27,6 +27,11 @@
                             AI SEO Optimizer
                         </NuxtLink>
                     </el-dropdown-item>
+                    <el-dropdown-item>
+                        <NuxtLink class="dropdown-item" to="/telegpt">
+                            Telegram Reply GPT
+                        </NuxtLink>
+                    </el-dropdown-item>
                 </el-dropdown-menu>
             </template>
         </el-dropdown>
